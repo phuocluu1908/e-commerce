@@ -23,7 +23,6 @@ const ProductItem = () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 277px;
   padding: 0 .3125rem;
   display: flex;
   flex-wrap: wrap;
