@@ -1,20 +1,20 @@
 import React from "react"
 import styled from "styled-components"
+import { ORANGE } from "../../common/colors"
 import products from "./products"
 
 const ProductItem = () => {
   return (
     <Wrapper>
       {products.map((item, i) => (
-        <ItemWrapper>
+        <ItemWrapper key={i}>
           <ProductImage src={item.img} />
-          <ProductTitle>
-            {item.name}
-          </ProductTitle>
+          <ProductTitle>{item.name}</ProductTitle>
           <PriceAndSoldQuantifyWrapper>
             <PriceWrapper>${item.price}</PriceWrapper>
             <SoldQuantityWrapper>Sold ${item.sold}</SoldQuantityWrapper>
           </PriceAndSoldQuantifyWrapper>
+          <AddToCartPopup>Add To Cart</AddToCartPopup>
         </ItemWrapper>
       ))}
     </Wrapper>
@@ -23,10 +23,22 @@ const ProductItem = () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 0 .3125rem;
+  padding: 0 0.3125rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+`
+
+const AddToCartPopup = styled.div`
+  width: 100%;
+  height: 30px;
+  background: ${ORANGE};
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
 `
 
 const ItemWrapper = styled.div`
@@ -34,6 +46,8 @@ const ItemWrapper = styled.div`
   width: 16%;
   margin-top: 0.3125rem;
   cursor: pointer;
+  position: relative;
+  z-index: 10;
 `
 
 const ProductImage = styled.img`
